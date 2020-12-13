@@ -1,9 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('admin', function ()
-{
-	return 'hello';
-});
+Route::get('', [HomeController::class, 'index']);
