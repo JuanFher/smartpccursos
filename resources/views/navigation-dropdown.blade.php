@@ -6,9 +6,9 @@
             'active' => request()->routeIs('home')
         ],
         [
-            'name' => 'Prueba',
-            'route' => '#',
-            'active' => false
+            'name' => 'Cursos',
+            'route' => route('courses.index'),
+            'active' => request()->routeIs('courses.index')
         ],
         [
             'name' => 'Prueba2',

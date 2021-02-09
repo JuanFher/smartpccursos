@@ -13,8 +13,22 @@ class Course extends Model
     const REVISION = 2;
     const PUBLICADO = 3;
 
+    protected $withCount = ['students', 'reviews'];
     protected $guarded = ['id', 'status'];
 
+    public function getRatingAttribute()
+    {
+        if ($this->reviews_count) {
+            return round($this->reviews->avg('rating'), 1);
+        }else{
+            return 5;
+        }
+    }
+
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
     // Relacion uno a muchos
 
     public function teacher()
@@ -23,7 +37,7 @@ class Course extends Model
     }
     public function reviews()
     {
-        return $this->hasMany('App\Models\Reviews');
+        return $this->hasMany('App\Models\Review');
     }
     public function requirements()
     {
