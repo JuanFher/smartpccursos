@@ -1,11 +1,10 @@
 <x-app-layout>
     <section class="bg-cover" style="background-image: url({{ asset('img/home/cursos_en_linea_home.jpg') }})">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-60">
             <div class="w-full md:w-3/4 lg:w-1/2">
                 <h1 class="text-white font-bolt text-5xl">Aprende en tu horario en tan solo 10 clases</h1>
                 <p class="text-white text-lg mt-2 mb-4">Estudie cualquier tema, en cualquier momento. ¡Explore cursos al precio más bajo!</p>
-                <!-- component -->
-<!-- This is an example component -->
+                
                  <div class="pt-2 relative mx-auto text-gray-600">
                     <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                       type="search" name="search" placeholder="Search">
