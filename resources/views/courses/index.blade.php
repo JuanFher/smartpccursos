@@ -15,4 +15,6 @@
             </div>
         </div>
     </section>
+
+    @livewire('course-index')
 </x-app-layout>
