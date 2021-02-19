@@ -12,4 +12,9 @@ class CourseController extends Controller
     	$courses = Course::all();
     	return view('courses.index');
     }
+
+    public function show(Course $course)
+    {
+    	return view('courses.show', compact('course'));
+    }
 }

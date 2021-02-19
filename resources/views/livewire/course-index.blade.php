@@ -1,6 +1,6 @@
 <div>
 	<div class="bg-gray-200 py-4">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex" >
+		<div class="container flex" >
 			<button class="focus:outline-none  bg-white shadow h-12 px-4 rounded-lg text-gray-500 mr-4" wire:click="resetFilters()">
 				<i class="fas fa-layer-group text-sm mr-2"></i>
 				Todos los Cursos
