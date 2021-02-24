@@ -7,10 +7,10 @@
 			<div class="text-white">
 				<h1 class="text-4xl">{{ $course->title }}</h1>
 				<h2 class="text-xl">{{ $course->subtitle }}</h2>
-				<p class="mb-2"><i class="fas fa-chart-line mr-3"></i>Nivel: {{ $course->level->name }}</p>
-				<p class="mb-2"><i class="fas fa-book mr-3"></i>Categoría: {{ $course->category->name }}</p>
-				<p class="mb-2"><i class="fas fa-users mr-3"></i>Matriculados: {{ $course->student_count }}</p>
-				<p><i class="far fa-star mr-3"></i>calificación: {{ $course->rating }}</p>
+				<p class="mb-2"><i class="fas fa-chart-line mr-3"></i><strong class="">Nivel: </strong>{{ $course->level->name }}</p>
+				<p class="mb-2"><i class="fas fa-book mr-3"></i><strong class="">Categoría:</strong> {{ $course->category->name }}</p>
+				<p class="mb-2"><i class="fas fa-users mr-3"></i><strong class="">Matriculados: </strong>{{ $course->students_count }}</p>
+				<p><i class="far fa-star mr-3"></i><strong class="">Calificación: </strong>{{ $course->rating }}</p>
 			</div>
 		</div>
 	</section>
@@ -79,7 +79,14 @@
 							<a href="#" class="text-blue-400 text-sm font-bold">{{ '@' . Str::slug($course->teacher->name, '') }}</a>
 						</div>
 					</div>
-					<a href="#" class="btn btn-danger btn-block mt-6" >Llevar este curso</a>
+					@can('enrolled', $course)
+						<a class="btn btn-danger btn-block mt-6" href="{{ route('courses.status', $course) }}">Continuar Aprendiendo</a>
+					@else
+						<form action="{{ route('courses.enrolled', $course) }}" method="POST">
+							@csrf
+							<button class="btn btn-danger btn-block mt-6" >Llevar este curso</button>
+						</form>
+					@endcan
 				</div>
 			</section>
 			<aside class="mt-4 hidden lg:block">
