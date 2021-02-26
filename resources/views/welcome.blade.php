@@ -5,13 +5,7 @@
                 <h1 class="text-white font-bolt text-5xl">Aprende en tu horario en tan solo 10 clases</h1>
                 <p class="text-white text-lg mt-2 mb-4">Estudie cualquier tema, en cualquier momento. ¡Explore cursos al precio más bajo!</p>
                 
-                 <div class="pt-2 relative mx-auto text-gray-600">
-                    <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                      type="search" name="search" placeholder="Search">
-                      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded absolute right-0 top-0 mt-2">
-                          Buscar
-                      </button>
-                  </div>
+                 @livewire('search')
             </div>
         </div>
     </section>
