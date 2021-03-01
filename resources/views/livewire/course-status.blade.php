@@ -1,6 +1,6 @@
 <div class="mt-8">
-	<div class="container grid grid-cols-3 gap-8">
-		<div class="col-span-2">
+	<div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
+		<div class="lg:col-span-2">
 			<div class="embed-responsive">
 				{!! $current->iframe !!}
 			</div>
@@ -12,8 +12,12 @@
 				</div>
 			@endif
 
-			<div class="flex items-center mt-4 cursor-pointer">
-				<i class="fas fa-toggle-off text-2xl text-gray-600 mr-3"></i>
+			<div class="flex items-center mt-4 cursor-pointer" wire:click.prevent="completed">
+				@if ($current->completed)
+					<i class="fas fa-toggle-on text-2xl text-blue-600 mr-3"></i>
+				@else
+					<i class="fas fa-toggle-off text-2xl text-gray-600 mr-3"></i>
+				@endif
 				<p>Marcar esta clase como terminada</p>
 			</div>
 
@@ -29,8 +33,6 @@
 					
 				</div>
 			</div>
-
-			
 		</div>
 		<div class="card">
 			<div class="card-body">
@@ -44,17 +46,16 @@
 						<a class="text-blue-500 text-sm" href="">{{ '@'. Str::slug($course->teacher->name, '') }}</a>
 					</div>
 				</div>
-				<p class="text-gray-600 text-sm mt-3">20% Completado</p>
+				<p class="text-gray-600 text-sm mt-3">{{$this->advance . '%'}} Completado</p>
 				<div class="relative pt-1">
 					<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
-						<div style="width:30%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"></div>
+						<div style="width:{{$this->advance . '%'}}" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500 transition-all duration-500"></div>
 					</div>
 				</div>
 				<ul>
-					
 					@foreach ($course->sections as $section)
 						<li class="text-gray-600 mb-4">
-							<a class="font-bold text-base inline-block mb-2">{{ $section->name }}</a>
+							<a class="text-blue-500 font-bold text-base inline-block mb-2">{{ $section->name }}</a>
 							<ul>
 								@foreach ($section->lessons as $lesson)
 									<li class="flex">
